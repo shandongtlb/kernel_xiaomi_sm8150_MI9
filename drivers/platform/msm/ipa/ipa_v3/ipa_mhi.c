@@ -644,12 +644,12 @@ fail_reset_channel:
 
 int ipa3_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
-		union __packed gsi_channel_scratch ch_scratch, u8 index)
+		union gsi_channel_scratch ch_scratch, u8 index)
 {
 	int res;
 	int ipa_ep_idx;
 	struct ipa3_ep_context *ep;
-	union __packed gsi_channel_scratch gsi_ch_scratch;
+	union gsi_channel_scratch gsi_ch_scratch;
 
 	IPA_MHI_FUNC_ENTRY();
 
