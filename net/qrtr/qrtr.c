@@ -177,8 +177,6 @@ struct qrtr_node {
 
 	struct wakeup_source *ws;
 
-	struct wakeup_source *ws;
-
 	void *ilc;
 };
 
