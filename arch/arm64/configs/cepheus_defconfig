@@ -480,6 +480,7 @@ CONFIG_PCI_MSM_MSI=y
 # PCI switch controller drivers
 #
 # CONFIG_PCI_SW_SWITCHTEC is not set
+# CONFIG_PCI_SW_QCOM_SWITCH is not set
 
 #
 # Kernel Features
@@ -4442,6 +4443,12 @@ CONFIG_ION=y
 #
 # CONFIG_TYPEC_TCPM is not set
 # CONFIG_PI433 is not set
+
+#
+# Qualcomm Atheros CLD WLAN module
+#
+CONFIG_QCA_CLD_WLAN=y
+CONFIG_QCA_CLD_WLAN_PROFILE="default"
 # CONFIG_GOLDFISH is not set
 # CONFIG_CHROME_PLATFORMS is not set
 
@@ -5223,6 +5230,12 @@ CONFIG_ESOC_MDM_4x=y
 CONFIG_ESOC_MDM_DRV=y
 CONFIG_ESOC_MDM_DBG_ENG=y
 # CONFIG_MDM_DBG_REQ_ENG is not set
+
+#
+# Qualcomm RmNet extensions
+#
+CONFIG_RMNET_PERF=y
+CONFIG_RMNET_SHS=y
 
 #
 # Firmware Drivers
