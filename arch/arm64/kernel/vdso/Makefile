@@ -35,10 +35,6 @@ KASAN_SANITIZE := n
 UBSAN_SANITIZE := n
 KCOV_INSTRUMENT := n
 
-# Workaround for bare-metal (ELF) toolchains that neglect to pass -shared
-# down to collect2, resulting in silent corruption of the vDSO image.
-ccflags-y += -Wl,-shared
-
 obj-y += vdso.o
 extra-y += vdso.lds
 CPPFLAGS_vdso.lds += -P -C -U$(ARCH)
@@ -48,7 +44,7 @@ $(obj)/vdso.o : $(obj)/vdso.so
 
 # Link rule for the .so file, .lds has to be first
 $(obj)/vdso.so.dbg: $(src)/vdso.lds $(obj-vdso)
-	$(call if_changed,vdsold)
+	$(call if_changed,ld)
 
 # Strip rule for the .so file
 $(obj)/%.so: OBJCOPYFLAGS := -S
@@ -78,6 +74,7 @@ quiet_cmd_vdsold = VDSOL   $@
 						-Wl$(comma)-T $^ -o $@
 quiet_cmd_vdsocc = VDSOC   $@
       cmd_vdsocc = ${CC} $(c_flags) -c -o $@ $<
+
 quiet_cmd_vdsoas = VDSOA   $@
       cmd_vdsoas = $(CC) $(a_flags) -c -o $@ $<
 
